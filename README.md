@@ -21,6 +21,11 @@ export TF_VAR_aws_region=us-east-1
 export TF_VAR_aws_account_id=YOURaccountID
 export TF_VAR_role_arn=YourLambdaRoleARN
 export TF_VAR_skill_id=YourSkillID
+export TF_VAR_trello_app_key=YourTrelloAppKey
+export TF_VAR_trello_token=YourTrelloToken
+export TF_VAR_trello_board_id=YourBoardId
+export TF_VAR_trello_add_list_id=IdOfListToAddNewCardsTo
+export TF_VAR_trello_read_list_ids=ReadListId1,ReadListId2,etc
 terraform plan
 ```
 
