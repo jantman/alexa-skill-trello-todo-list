@@ -12,13 +12,12 @@ Alexa skill to read your Trello todo list and add items to it
 6. Click the "Save Endpoints" button near the top left of the panel. Make sure a popup confirms saving successfully.
 7. Click the "test" tab along the top of the screen and test the skill in your browser.
 
-## Terraform
+## Terraform - Standalone
 
 Export some environment variables and then run terraform:
 
 ```bash
-export TF_VAR_aws_region=us-east-1
-export TF_VAR_aws_account_id=YOURaccountID
+export AWS_DEFAULT_REGION=us-east-1; export AWS_REGION=$AWS_DEFAULT_REGION
 export TF_VAR_role_arn=YourLambdaRoleARN
 export TF_VAR_skill_id=YourSkillID
 export TF_VAR_trello_app_key=YourTrelloAppKey
@@ -27,6 +26,29 @@ export TF_VAR_trello_board_id=YourBoardId
 export TF_VAR_trello_add_list_id=IdOfListToAddNewCardsTo
 export TF_VAR_trello_read_list_ids=ReadListId1,ReadListId2,etc
 terraform plan
+```
+
+## Terraform - As A Module
+
+This repository can also be used as a module in an existing terraform configuration/project, as shown below.
+
+Note that it defines an ``aws`` provider internally, which isn't best practice but is done for safety when running standalone. It's currently developed with terraform 0.11.8 and terraform-provider-aws 1.40.0.
+
+```hcl
+module "alexa_trello" {
+  source = "/home/jantman/GIT/alexa-skill-trello-todo-list"
+
+  role_arn             = "YourLambdaRoleARN"
+  skill_id             = "YourSkillID"
+  trello_app_key       = "YourTrelloAppKey"
+  trello_token         = "YourTrelloToken"
+  trello_board_id      = "YourBoardId"
+  trello_add_list_id   = "IdOfListToAddNewCardsTo"
+  trello_read_list_ids = "ReadListId1,ReadListId2,etc"
+  tags                 = {
+    foo = "bar"
+  }
+}
 ```
 
 ## Development

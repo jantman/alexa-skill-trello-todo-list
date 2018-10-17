@@ -1,12 +1,3 @@
-variable "aws_region" {
-  description = "AWS region to create Lambda in"
-  default     = "us-east-1"
-}
-
-variable "aws_account_id" {
-  description = "Your AWS account ID"
-}
-
 variable "role_arn" {
   description = "Lambda execution role ARN"
 }
@@ -33,4 +24,10 @@ variable "trello_add_list_id" {
 
 variable "trello_read_list_ids" {
   description = "Trello List IDs to read, as CSV"
+}
+
+variable "tags" {
+  description = "Tags for Lambda function"
+  type        = "map"
+  default     = {}
 }

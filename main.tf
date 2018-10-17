@@ -1,8 +1,3 @@
-provider "aws" {
-  region              = "${var.aws_region}"
-  allowed_account_ids = ["${var.aws_account_id}"]
-}
-
 data "archive_file" "pkg" {
   type        = "zip"
   source_dir  = "${path.module}/lambda_package/"
@@ -26,6 +21,8 @@ resource "aws_lambda_function" "lambda" {
       TRELLO_READ_LIST_IDS = "${var.trello_read_list_ids}"
     }
   }
+
+  tags = "${var.tags}"
 }
 
 resource "aws_lambda_permission" "with_alexa" {
