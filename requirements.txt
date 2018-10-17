@@ -1,1 +1,2 @@
 ask-sdk-core
+trello==0.9.1
