@@ -1,11 +1,6 @@
-terraform {
-  version = "~>0.11.8"
-}
-
 provider "aws" {
   region              = "${var.aws_region}"
   allowed_account_ids = ["${var.aws_account_id}"]
-  version             = "1.40.0"
 }
 
 data "archive_file" "pkg" {
