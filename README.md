@@ -36,7 +36,7 @@ Note that it defines an ``aws`` provider internally, which isn't best practice b
 
 ```hcl
 module "alexa_trello" {
-  source = "/home/jantman/GIT/alexa-skill-trello-todo-list"
+  source = "github.com/jantman/alexa-skill-trello-todo-list?ref=0.1.0"
 
   role_arn             = "YourLambdaRoleARN"
   skill_id             = "YourSkillID"
