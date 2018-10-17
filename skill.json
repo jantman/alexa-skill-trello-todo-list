@@ -1,0 +1,100 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "trello",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ListToDo",
+                    "slots": [],
+                    "samples": [
+                        "for my list",
+                        "what's on my list",
+                        "what is on my list for today",
+                        "what's on my todo list"
+                    ]
+                },
+                {
+                    "name": "AddToDo",
+                    "slots": [
+                        {
+                            "name": "ToDoItem",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "something"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "add {ToDoItem} to today",
+                        "add {ToDoItem}",
+                        "add {ToDoItem} to my to do list",
+                        "add {ToDoItem} to my list"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "AddToDo",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.659146407193"
+                    },
+                    "slots": [
+                        {
+                            "name": "ToDoItem",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.659146407193.729272587615"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.659146407193",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Are you sure you want me to add {ToDoItem} to your to do list?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.659146407193.729272587615",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what would you like to add to your list?"
+                    }
+                ]
+            }
+        ]
+    }
+}
