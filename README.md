@@ -30,13 +30,11 @@ terraform plan
 
 ## Terraform - As A Module
 
-This repository can also be used as a module in an existing terraform configuration/project, as shown below.
-
-Note that it defines an ``aws`` provider internally, which isn't best practice but is done for safety when running standalone. It's currently developed with terraform 0.11.8 and terraform-provider-aws 1.40.0.
+This repository can also be used as a module in an existing terraform configuration/project, as shown below. It's currently developed with terraform 0.11.8 and terraform-provider-aws 1.40.0.
 
 ```hcl
 module "alexa_trello" {
-  source = "/home/jantman/GIT/alexa-skill-trello-todo-list"
+  source = "github.com/jantman/alexa-skill-trello-todo-list?ref=0.1.0"
 
   role_arn             = "YourLambdaRoleARN"
   skill_id             = "YourSkillID"
